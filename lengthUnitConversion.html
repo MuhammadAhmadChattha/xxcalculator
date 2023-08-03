@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Length Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 16px;
+            color: #333;
+        }
+
+        label, select, input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 12px;
+            font-size: 16px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-top: 16px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Length Converter</h1>
+        <label for="length">Enter the length:</label>
+        <input type="number" id="length" placeholder="Enter length">
+        <label for="from-unit">From:</label>
+        <select id="from-unit">
+            <option value="m">Meters</option>
+            <option value="cm">Centimeters</option>
+            <option value="mm">Millimeters</option>
+            <option value="km">Kilometers</option>
+            <option value="in">Inches</option>
+            <option value="ft">Feet</option>
+            <option value="yd">Yards</option>
+            <option value="mi">Miles</option>
+        </select>
+        <label for="to-unit">To:</label>
+        <select id="to-unit">
+            <option value="m">Meters</option>
+            <option value="cm">Centimeters</option>
+            <option value="mm">Millimeters</option>
+            <option value="km">Kilometers</option>
+            <option value="in">Inches</option>
+            <option value="ft">Feet</option>
+            <option value="yd">Yards</option>
+            <option value="mi">Miles</option>
+        </select>
+        <button onclick="convertLength()">Convert</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convertLength() {
+            const lengthInput = document.getElementById('length').value;
+            const fromUnit = document.getElementById('from-unit').value;
+            const toUnit = document.getElementById('to-unit').value;
+            let result;
+
+            if (fromUnit === toUnit) {
+                result = lengthInput;
+            } else if (fromUnit === 'm' && toUnit === 'cm') {
+                result = lengthInput * 100;
+            } else if (fromUnit === 'm' && toUnit === 'mm') {
+                result = lengthInput * 1000;
+            } else if (fromUnit === 'm' && toUnit === 'km') {
+                result = lengthInput / 1000;
+            } else if (fromUnit === 'm' && toUnit === 'in') {
+                result = lengthInput * 39.3701;
+            } else if (fromUnit === 'm' && toUnit === 'ft') {
+                result = lengthInput * 3.28084;
+            } else if (fromUnit === 'm' && toUnit === 'yd') {
+                result = lengthInput * 1.09361;
+            } else if (fromUnit === 'm' && toUnit === 'mi') {
+                result = lengthInput * 0.000621371;
+            } else if (fromUnit === 'cm' && toUnit === 'm') {
+                result = lengthInput / 100;
+            } else if (fromUnit === 'cm' && toUnit === 'mm') {
+                result = lengthInput * 10;
+            } else if (fromUnit === 'cm' && toUnit === 'km') {
+                result = lengthInput / 100000;
+            } else if (fromUnit === 'cm' && toUnit === 'in') {
+                result = lengthInput / 2.54;
+            } else if (fromUnit === 'cm' && toUnit === 'ft') {
+                result = lengthInput / 30.48;
+            } else if (fromUnit === 'cm' && toUnit === 'yd') {
+                result = lengthInput / 91.44;
+            } else if (fromUnit === 'cm' && toUnit === 'mi') {
+                result = lengthInput / 160934.4;
+            } else if (fromUnit === 'mm' && toUnit === 'm') {
+                result = lengthInput / 1000;
+            } else if (fromUnit === 'mm' && toUnit === 'cm') {
+                result = lengthInput / 10;
+            } else if (fromUnit === 'mm' && toUnit === 'km') {
+                result = lengthInput / 1000000;
+            } else if (fromUnit === 'mm' && toUnit === 'in') {
+                result = lengthInput / 25.4;
+            } else if (fromUnit === 'mm' && toUnit === 'ft') {
+                result = lengthInput / 304.8;
+            } else if (fromUnit === 'mm' && toUnit === 'yd') {
+                result = lengthInput / 914.4;
+            } else if (fromUnit === 'mm' && toUnit === 'mi') {
+                result = lengthInput / 1609344;
+            } else if (fromUnit === 'km' && toUnit === 'm') {
+                result = lengthInput * 1000;
+            } else if (fromUnit === 'km' && toUnit === 'cm') {
+                result = lengthInput * 100000;
+            } else if (fromUnit === 'km' && toUnit === 'mm') {
+                result = lengthInput * 1000000;
+            } else if (fromUnit === 'km' && toUnit === 'in') {
+                result = lengthInput * 39370.1;
+            } else if (fromUnit === 'km' && toUnit === 'ft') {
+                result = lengthInput * 3280.84;
+            } else if (fromUnit === 'km' && toUnit === 'yd') {
+                result = lengthInput * 1093.61;
+            } else if (fromUnit === 'km' && toUnit === 'mi') {
+                result = lengthInput * 0.621371;
+            } else if (fromUnit === 'in' && toUnit === 'm') {
+                result = lengthInput * 0.0254;
+            } else if (fromUnit === 'in' && toUnit === 'cm') {
+                result = lengthInput * 2.54;
+            } else if (fromUnit === 'in' && toUnit === 'mm') {
+                result = lengthInput * 25.4;
+            } else if (fromUnit === 'in' && toUnit === 'km') {
+                result = lengthInput * 0.0000254;
+            } else if (fromUnit === 'in' && toUnit === 'ft') {
+                result = lengthInput / 12;
+            } else if (fromUnit === 'in' && toUnit === 'yd') {
+                result = lengthInput / 36;
+            } else if (fromUnit === 'in' && toUnit === 'mi') {
+                result = lengthInput * 0.000015783;
+            } else if (fromUnit === 'ft' && toUnit === 'm') {
+                result = lengthInput * 0.3048;
+            } else if (fromUnit === 'ft' && toUnit === 'cm') {
+                result = lengthInput * 30.48;
+            } else if (fromUnit === 'ft' && toUnit === 'mm') {
+                result = lengthInput * 304.8;
+            } else if (fromUnit === 'ft' && toUnit === 'km') {
+                result = lengthInput * 0.0003048;
+            } else if (fromUnit === 'ft' && toUnit === 'in') {
+                result = lengthInput * 12;
+            } else if (fromUnit === 'ft' && toUnit === 'yd') {
+                result = lengthInput / 3;
+            } else if (fromUnit === 'ft' && toUnit === 'mi') {
+                result = lengthInput * 0.000189394;
+            } else if (fromUnit === 'yd' && toUnit === 'm') {
+                result = lengthInput * 0.9144;
+            } else if (fromUnit === 'yd' && toUnit === 'cm') {
+                result = lengthInput * 91.44;
+            } else if (fromUnit === 'yd' && toUnit === 'mm') {
+                result = lengthInput * 914.4;
+            } else if (fromUnit === 'yd' && toUnit === 'km') {
+                result = lengthInput * 0.0009144;
+            } else if (fromUnit === 'yd' && toUnit === 'in') {
+                result = lengthInput * 36;
+            } else if (fromUnit === 'yd' && toUnit === 'ft') {
+                result = lengthInput * 3;
+            } else if (fromUnit === 'yd' && toUnit === 'mi') {
+                result = lengthInput * 0.000568182;
+            } else if (fromUnit === 'mi' && toUnit === 'm') {
+                result = lengthInput * 1609.34;
+            } else if (fromUnit === 'mi' && toUnit === 'cm') {
+                result = lengthInput * 160934.4;
+            } else if (fromUnit === 'mi' && toUnit === 'mm') {
+                result = lengthInput * 1609344;
+            } else if (fromUnit === 'mi' && toUnit === 'km') {
+                result = lengthInput * 1.60934;
+            } else if (fromUnit === 'mi' && toUnit === 'in') {
+                result = lengthInput * 63360;
+            } else if (fromUnit === 'mi' && toUnit === 'ft') {
+                result = lengthInput * 5280;
+            } else if (fromUnit === 'mi' && toUnit === 'yd') {
+                result = lengthInput * 1760;
+            }
+
+            document.getElementById('result').innerText = `Result: ${result} ${toUnit}`;
+        }
+    </script>
+</body>
+</html>

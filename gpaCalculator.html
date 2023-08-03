@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>GPA Calculator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body,
+    h1,h2 {
+      font-family: "Raleway", Arial, sans-serif
+    }
+
+    h1,h2 {
+      letter-spacing: 6px
+    }
+
+    pre {
+      font-family: "Raleway", Arial, sans-serif
+        /* letter-spacing: 6px */
+    }
+
+    .tableHead {
+      font-family: "Raleway", Arial, sans-serif
+    }
+
+    .w3-row-padding img {
+      margin-bottom: 12px
+    }
+
+    input[type="Subject"] {
+      margin-top: 10px;
+      width: 160px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="Grade"] {
+      width: 60px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .Grade {
+      width: 60px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="number"] {
+      width: 60px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #828782;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #000000;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+      background-color: #fff;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .container1 {
+      align-content: center;
+      max-width: auto;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-content" style="max-width:1500px">
+
+    <!-- Header -->
+    <header class="w3-panel w3-center w3-opacity" style="padding:128px 16px">
+      <h1 class="w3-xlarge">CALCULATOR</h1>
+      <h1>Free Online Calculations</h1>
+
+      <div class="w3-padding-32">
+        <div class="w3-bar w3-border">
+          <a href="#" class="w3-bar-item w3-button">Home</a>
+          <a href="#" class="w3-bar-item w3-button w3-light-grey">Portfolio</a>
+          <a href="#" class="w3-bar-item w3-button">Contact</a>
+          <a href="#" class="w3-bar-item w3-button w3-hide-small">Weddings</a>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div class="container" style="text-align: center;">
+    <h1>GPA Calculator</h1>
+    <p>Enter your grades and credit hours for each course:</p>
+
+    <form id="gpaForm">
+      <div id="subjects">
+        <!-- Course 1 inputs -->
+        <div>
+          <pre>Subject Name   Grade   Credit Hours</pre>
+          <!-- <label for="subject1">Subject Name:</label> -->
+          <input type="Subject" name="subject[]" required>
+          <!-- <label for="grade1">Grade:</label> -->
+          <!-- <input type="Grade" name="grade[]" list="grades" required> -->
+          <select name="grade[]" required class="Grade">
+            <!-- <option value="-">-</option> -->
+            <option value="A+">A+</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="F">F</option>
+            <option value="W">W (Withdraw)</option>
+            <option value="I">I (Incomplete)</option>
+          </select>
+          <!-- <label for="credit1">Credit Hours:</label> -->
+          <input type="number" name="credit[]" min="1" required>
+        </div>
+      </div>
+
+      <button type="button" onclick="addSubject()">Add Subject</button>
+      <button type="button" onclick="removeSubject()">Remove Subject</button>
+      <button type="button" onclick="calculateGPA()">Calculate GPA</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function addSubject() {
+      const subjectsDiv = document.getElementById("subjects");
+      const newSubjectDiv = document.createElement("div");
+
+      newSubjectDiv.innerHTML = `
+      <div>
+        <!-- <pre>Subject Name   Grade   Credit Hours</pre> -->
+        <!-- <label for="subject1">Subject Name:</label> -->
+        <input type="Subject" name="subject[]" required>
+        <!-- <label for="grade1">Grade:</label> -->
+        <!-- <input type="Grade" name="grade[]" list="grades" required> -->
+        <select name="grade[]" required class="Grade">
+          <!-- <option value="-">-</option> -->
+          <option value="A+">A+</option>
+          <option value="A">A</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B">B</option>
+          <option value="B-">B-</option>
+          <option value="C+">C+</option>
+          <option value="C">C</option>
+          <option value="C-">C-</option>
+          <option value="D+">D+</option>
+          <option value="D">D</option>
+          <option value="F">F</option>
+          <option value="W">W (Withdraw)</option>
+          <option value="I">I (Incomplete)</option>
+        </select>
+        <!-- <label for="credit1">Credit Hours:</label> -->
+        <input type="number" name="credit[]" min="1" required>
+      </div>
+      `;
+
+      subjectsDiv.appendChild(newSubjectDiv);
+    }
+
+    function removeSubject() {
+      const subjectsDiv = document.getElementById("subjects");
+      const subjectDivs = subjectsDiv.getElementsByTagName("div");
+
+      // Ensure at least one subject remains
+      if (subjectDivs.length > 1) {
+        subjectsDiv.removeChild(subjectDivs[subjectDivs.length - 1]);
+      }
+    }
+
+    function calculateGPA() {
+      let totalCredits = 0;
+      let totalGradePoints = 0;
+
+      // Get the input values for each course
+      const subjects = [];
+      const grades = [];
+      const credits = [];
+
+      const subjectInputs = document.getElementsByName("subject[]");
+      const gradeInputs = document.getElementsByName("grade[]");
+      const creditInputs = document.getElementsByName("credit[]");
+
+      for (let i = 0; i < gradeInputs.length; i++) {
+        if (
+          subjectInputs[i].value.trim() !== "" &&
+          gradeInputs[i].value.trim() !== "" &&
+          creditInputs[i].value !== ""
+        ) {
+          subjects.push(subjectInputs[i].value.trim());
+          grades.push(gradeInputs[i].value.trim().toUpperCase());
+          credits.push(parseFloat(creditInputs[i].value));
+        }
+      }
+
+      // Calculate total grade points and total credits
+      for (let i = 0; i < grades.length; i++) {
+        const gradePoint = calculateGradePoint(grades[i]);
+        if (gradePoint !== null) {
+          totalGradePoints += gradePoint * credits[i];
+          totalCredits += credits[i];
+        }
+      }
+
+      // // Calculate GPA
+      // const gpa = totalGradePoints / totalCredits;
+
+      // // Display the result
+      // const resultDiv = document.getElementById("result");
+      // let resultHTML = "<p>Your GPA is: " + gpa.toFixed(2) + "</p>";
+      // resultHTML += "<p>Subjects:</p>";
+      // for (let i = 0; i < subjects.length; i++) {
+      //   resultHTML += "<pre>" + subjects[i] + ":            " + grades[i] + "        (Credits: " + credits[i] + ")</pre>";
+      // }
+
+
+      // resultDiv.innerHTML = resultHTML;
+
+      // Calculate GPA
+      const gpa = totalGradePoints / totalCredits;
+
+      // Display the result in a table
+      const resultTableDiv = document.getElementById("result");
+      let resultHTML = "<h2>GPA Result</h2>";
+      resultHTML += "<table class='table table-hover'>";
+      resultHTML += "<tr><th>Subject Name</th><th>Grade</th><th>Credit Hours</th></tr>";
+      for (let i = 0; i < subjects.length; i++) {
+        resultHTML += "<tr><td>" + subjects[i] + "</td><td>" + grades[i] + "</td><td>" + credits[i] + "</td></tr>";
+      }
+      resultHTML += "</table>";
+      resultHTML += "<p>Your GPA is: " + gpa.toFixed(2) + "</p>";
+      resultTableDiv.innerHTML = resultHTML;
+    }
+    
+
+    function calculateGradePoint(grade) {
+      switch (grade) {
+        case "A+": return 4.0;
+        case "A": return 4.0;
+        case "A-": return 3.7;
+        case "B+": return 3.3;
+        case "B": return 3.0;
+        case "B-": return 2.7;
+        case "C+": return 2.3;
+        case "C": return 2.0;
+        case "C-": return 1.7;
+        case "D+": return 1.3;
+        case "D": return 1.0;
+        case "F": return 0.0;
+        case "W": return null; // Withdraw
+        case "I": return null; // Incomplete
+        default: return 0.0;
+      }
+    }
+  </script>
+  <p></p>
+</body>
+
+</html>

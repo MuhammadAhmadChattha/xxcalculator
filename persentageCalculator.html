@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Percentage Calculators</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body,
+    h1,
+    h2 {
+      font-family: "Raleway", Arial, sans-serif
+    }
+
+    h1,
+    h2 {
+      letter-spacing: 6px
+    }
+
+    pre {
+      font-family: "Raleway", Arial, sans-serif
+        /* letter-spacing: 6px */
+    }
+
+    .tableHead {
+      font-family: "Raleway", Arial, sans-serif
+    }
+
+    .w3-row-padding img {
+      margin-bottom: 12px
+    }
+
+    input[type="Subject"] {
+      margin-top: 10px;
+      width: 160px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="Grade"] {
+      width: 60px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .Grade {
+      width: 60px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="number"] {
+      width: 100px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #828782;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #000000;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+      background-color: #fff;
+    }
+
+    .container {
+      max-width: auto;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .container1 {
+      align-content: center;
+      max-width: auto;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+  </style>
+</head>
+
+<body>
+
+  <div class="w3-content" style="max-width:1500px">
+
+    <!-- Header -->
+    <header class="w3-panel w3-center w3-opacity" style="padding:128px 16px">
+      <h1 class="w3-xlarge">CALCULATOR</h1>
+      <h1>Free Online Calculations</h1>
+
+      <div class="w3-padding-32">
+        <div class="w3-bar w3-border">
+          <a href="#" class="w3-bar-item w3-button">Home</a>
+          <a href="#" class="w3-bar-item w3-button w3-light-grey">Portfolio</a>
+          <a href="#" class="w3-bar-item w3-button">Contact</a>
+          <a href="#" class="w3-bar-item w3-button w3-hide-small">Weddings</a>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div class="container" style="text-align: center;">
+    <h1>Percentage Calculators</h1>
+
+    <div class="container" style="text-align: center; margin-top: 50px;">
+      <!-- Percentage of Total Calculator -->
+      <h2>Number To Percentage</h2>
+      <label for="value">Enter the value:</label>
+      <input type="number" id="value" />
+      <label for="total">Enter the total value:</label>
+      <input type="number" id="total" />
+      <br>
+      <button onclick="calculatePercentageOfTotal()">Calculate</button>
+      <p id="resultPercentageOfTotal" class="result"></p>
+    </div>
+
+    <div class="container" style="text-align: center; margin-top: 50px;">
+      <!-- Percentage Increase/Decrease Calculator -->
+      <h2>Percentage Comparison Calculator</h2>
+      <label for="initialValue">Enter the initial value:</label>
+      <input type="number" id="initialValue" />
+      <label for="finalValue">Enter the final value:</label>
+      <input type="number" id="finalValue" />
+      <br>
+      <button onclick="calculatePercentageChange()">Calculate</button>
+      <p id="resultPercentageChange" class="result"></p>
+    </div>
+
+    <div class="container" style="text-align: center; margin-top: 50px;">
+      <!-- Percentage Discount Calculator -->
+      <h2>Percentage Discount Calculator</h2>
+      <label for="originalPrice">Enter the original price:</label>
+      <input type="number" id="originalPrice" />
+      <label for="discountPercentage">Enter the discount percentage:</label>
+      <input type="number" id="discountPercentage" placeholder="%"/>
+      <br>
+      <button onclick="calculateDiscountedPrice()">Calculate</button>
+      <p id="resultDiscountedPrice" class="result"></p>
+    </div>
+    <div class="container" style="text-align: center; margin-top: 50px;">
+      <!-- Percentage Markup Calculator -->
+      <h2>Percentage Markup Calculator</h2>
+      <label for="originalPriceMarkup">Enter the original price:</label>
+      <input type="number" id="originalPriceMarkup" />
+      <label for="markupPercentage">Enter the markup percentage:</label>
+      <input type="number" id="markupPercentage" placeholder="%"/>
+      <br>
+      <button onclick="calculateMarkedUpPrice()">Calculate</button>
+      <p id="resultMarkedUpPrice" class="result"></p>
+    </div>
+
+    <div class="container" style="text-align: center; margin-top: 50px;">
+      <h1>Percentage to Number Calculator</h1>
+      <label for="percentage">Enter the percentage:</label>
+      <input type="number" id="percentage" min="0" max="100" placeholder="%"/>
+      <label for="totalValue">Enter the total value:</label>
+      <input type="number" id="totalValue" min="0" />
+      <br>
+      <button onclick="calculateNumber()">Calculate</button>
+      <p id="result" class="result"></p>
+    </div>
+  </div>
+
+  <script>
+    function calculatePercentageOfTotal() {
+      const value = parseFloat(document.getElementById('value').value);
+      const total = parseFloat(document.getElementById('total').value);
+
+      if (!isNaN(value) && !isNaN(total)) {
+        const percentage = (value / total) * 100;
+        document.getElementById('resultPercentageOfTotal').textContent = `${value} is ${percentage.toFixed(2)}% of ${total}.`;
+      } else {
+        document.getElementById('resultPercentageOfTotal').textContent = 'Please enter valid numbers.';
+      }
+    }
+
+    function calculatePercentageChange() {
+      const initialValue = parseFloat(document.getElementById('initialValue').value);
+      const finalValue = parseFloat(document.getElementById('finalValue').value);
+
+      if (!isNaN(initialValue) && !isNaN(finalValue)) {
+        const difference = finalValue - initialValue;
+        const percentage = (difference / initialValue) * 100;
+        document.getElementById('resultPercentageChange').textContent = `The percentage change = ${percentage.toFixed(2)}%.`;
+      } else {
+        document.getElementById('resultPercentageChange').textContent = 'Please enter valid numbers.';
+      }
+    }
+
+    function calculateDiscountedPrice() {
+      const originalPrice = parseFloat(document.getElementById('originalPrice').value);
+      const discountPercentage = parseFloat(document.getElementById('discountPercentage').value);
+
+      if (!isNaN(originalPrice) && !isNaN(discountPercentage)) {
+        const discountAmount = (originalPrice * discountPercentage) / 100;
+        const discountedPrice = originalPrice - discountAmount;
+        document.getElementById('resultDiscountedPrice').textContent = `The discounted price = $${discountedPrice.toFixed(2)}.`;
+      } else {
+        document.getElementById('resultDiscountedPrice').textContent = 'Please enter valid numbers.';
+      }
+    }
+
+    function calculateMarkedUpPrice() {
+      const originalPriceMarkup = parseFloat(document.getElementById('originalPriceMarkup').value);
+      const markupPercentage = parseFloat(document.getElementById('markupPercentage').value);
+
+      if (!isNaN(originalPriceMarkup) && !isNaN(markupPercentage)) {
+        const markupAmount = (originalPriceMarkup * markupPercentage) / 100;
+        const markedUpPrice = originalPriceMarkup + markupAmount;
+        document.getElementById('resultMarkedUpPrice').textContent = `The marked-up price = $${markedUpPrice.toFixed(2)}.`;
+      } else {
+        document.getElementById('resultMarkedUpPrice').textContent = 'Please enter valid numbers.';
+      }
+    }
+
+    function calculateNumber() {
+      const percentage = parseFloat(document.getElementById('percentage').value);
+      const totalValue = parseFloat(document.getElementById('totalValue').value);
+
+      if (!isNaN(percentage) && !isNaN(totalValue)) {
+        if (percentage >= 0 && percentage <= 100) {
+          const number = (percentage / 100) * totalValue;
+          document.getElementById('result').textContent = `${percentage}% of ${totalValue} = ${number.toFixed(2)}.`;
+        } else {
+          document.getElementById('result').textContent = 'Please enter a valid percentage (0-100).';
+        }
+      } else {
+        document.getElementById('result').textContent = 'Please enter valid numbers.';
+      }
+    }
+  </script>
+</body>
+
+</html>

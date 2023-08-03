@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Age Calculator</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body,
+    h1 {
+      font-family: "Raleway", Arial, sans-serif
+    }
+
+    h1 {
+      letter-spacing: 6px
+    }
+
+    .w3-row-padding img {
+      margin-bottom: 12px
+    }
+
+    input[type="number"] {
+      width: 80px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #828782;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #000000;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+      background-color: #fff;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .container1 {
+      align-content: center;
+      max-width: auto;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-content" style="max-width:1500px">
+
+    <!-- Header -->
+    <header class="w3-panel w3-center w3-opacity" style="padding:128px 16px">
+      <h1 class="w3-xlarge">CALCULATOR</h1>
+      <h1>Free Online Calculations</h1>
+
+      <div class="w3-padding-32">
+        <div class="w3-bar w3-border">
+          <a href="#" class="w3-bar-item w3-button">Home</a>
+          <a href="#" class="w3-bar-item w3-button w3-light-grey">About Us</a>
+          <a href="#" class="w3-bar-item w3-button">Contact</a>
+          <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small">Weddings</a> -->
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div class="container" style="text-align: center;">
+    <h1>Age Calculator</h1>
+    <label for="birthDay">Enter Your Birth Date:</label>
+    <hr>
+    <pre>Day        Mounth      Year</pre>
+    <input type="number" id="birthDay" min="1" max="31" placeholder="dd" required>
+
+    <!-- <label for="birthMonth">Enter your birth month:</label> -->
+    <input type="number" id="birthMonth" min="1" max="12" placeholder="mm" required>
+
+    <!-- <label for="birthYear">Enter your birth year:</label> -->
+    <input type="number" id="birthYear" min="1900" max="2023" placeholder="yyyy" required>
+
+    <pre>
+
+    </pre>
+    <hr>
+    <label for="currentDay">Enter the current day:</label>
+    <hr>
+    <pre>Day        Mounth      Year</pre>
+    <input type="number" id="currentDay" min="1" max="31" placeholder="dd" required>
+
+    <!-- <label for="currentMonth">Enter the current month:</label> -->
+    <input type="number" id="currentMonth" min="1" max="12" placeholder="mm" required>
+
+    <!-- <label for="currentYear">Enter the current year:</label> -->
+    <input type="number" id="currentYear" min="1900" max="2023" placeholder="yyyy" required>
+
+    <br>
+    <button onclick="calculateAge()">Calculate Age</button>
+
+    <div id="result"></div>
+  </div>
+
+  <div style="text-align: center;">
+    <button id="countdownButton" onclick="startCountdown()" style="color: rgb(0, 0, 0); background-color: crimson;">Download</button>
+  </div>
+
+  <div class="container1" style="text-align: center; margin-top: 10%;">
+    <h1>Uses of Age Calculator</h1>
+    <hr>
+    <br>
+    
+    <h2>1. Age Verification</h2>
+    <p>Age calculators are commonly used for age verification purposes, especially in online platforms where age restrictions apply. Websites selling age-restricted products, like alcohol, tobacco, or adult content, often require users to confirm their age before accessing certain content or making purchases.</p>
+    
+    <h2>2. Legal Purposes</h2>
+    <p>In legal settings, an age calculator can be utilized to establish a person's age for various reasons, such as determining eligibility for certain rights or responsibilities, like voting, driving, or signing contracts.</p>
+    
+    <h2>3. Health and Medical Applications</h2>
+    <p>In healthcare, age plays a crucial role in medical assessments and treatments. Age calculators are used to accurately determine a patient's age, which aids in diagnosis, treatment planning, and monitoring health conditions.</p>
+    
+    <h2>4. Retirement Planning</h2>
+    <p>For individuals planning their retirement, knowing their exact age is essential for calculating their retirement savings, pension eligibility, and Social Security benefits.</p>
+    
+    <h2>5. Educational Purposes</h2>
+    <p>Schools and educational institutions may use age calculators to confirm a student's eligibility for specific grade levels or academic programs that have age restrictions.</p>
+    
+    <h2>6. Work and Employment</h2>
+    <p>Age is often a factor in various aspects of employment, such as determining eligibility for certain job positions, retirement benefits, or legal requirements like age of consent for employment contracts.</p>
+    
+    <h2>7. Sports and Competitions</h2>
+    <p>In sports and competitions, age eligibility can be a crucial factor. Age calculators help ensure fairness and compliance with age-related rules and regulations.</p>
+    
+    <h2>8. Life Milestones</h2>
+    <p>Age calculators are useful for individuals celebrating significant life milestones, like birthdays or anniversaries, allowing them to accurately determine their age and mark the occasion.</p>
+    
+    <h2>9. Historical and Genealogical Research</h2>
+    <p>Age calculators are beneficial for historians and genealogists to calculate the age of historical figures, ancestors, or to determine the time between events in historical records.</p>
+    
+    <h2>10. Age-Related Studies and Demographics</h2>
+    <p>Researchers and demographers use age calculators to analyze demographic data, population trends, and conduct studies related to age-specific phenomena.</p>
+  </div>
+
+  <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-large">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank"
+            class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+
+
+  <script>
+    function calculateAge() {
+      const birthDay = parseInt(document.getElementById("birthDay").value);
+      const birthMonth = parseInt(document.getElementById("birthMonth").value);
+      const birthYear = parseInt(document.getElementById("birthYear").value);
+
+      const currentDay = parseInt(document.getElementById("currentDay").value);
+      const currentMonth = parseInt(document.getElementById("currentMonth").value);
+      const currentYear = parseInt(document.getElementById("currentYear").value);
+
+      const birthdate = new Date(birthYear, birthMonth - 1, birthDay);
+      const currentDate = new Date(currentYear, currentMonth - 1, currentDay);
+
+      const ageInMilliseconds = currentDate - birthdate;
+      const years = Math.floor(ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25));
+      const remainingMilliseconds = ageInMilliseconds % (1000 * 60 * 60 * 24 * 365.25);
+
+      const months = Math.floor(remainingMilliseconds / (1000 * 60 * 60 * 24 * 30.44));
+      const remainingDays = Math.floor(remainingMilliseconds / (1000 * 60 * 60 * 24));
+
+      const days = remainingDays - (months * 30.44);
+
+      const ageDetails = `The time difference between the two dates is ${years} years, ${months} months, and ${days} days.`;
+
+      document.getElementById("result").innerText = ageDetails;
+    }
+
+    function startCountdown() {
+            var countdownButton = document.getElementById('countdownButton');
+            if (countdownButton.disabled) {
+                return; // The button has already been used, so exit the function.
+            }
+
+            // Disable the button to prevent multiple clicks during the countdown
+            countdownButton.disabled = true;
+
+            // Set the countdown duration in seconds
+            var countdownDuration = 10;
+
+            // Display the countdown and update it every second
+            var countdownInterval = setInterval(function() {
+                countdownDuration--;
+
+                if (countdownDuration >= 0) {
+                    countdownButton.innerHTML = 'Opening link in ' + countdownDuration + ' seconds...';
+                }
+
+                if (countdownDuration < 0) {
+                    clearInterval(countdownInterval);
+                    countdownButton.innerHTML = 'Click to Open Link'; // Reset the button text
+                    countdownButton.disabled = false; // Enable the button again
+                }
+            }, 1000);
+        }
+
+        function openLink() {
+            // Replace 'your-link-url' with the actual URL you want to open
+            var linkUrl = 'https://www.example.com';
+            window.location.href = linkUrl;
+        }
+    
+  </script>
+
+  
+</body>
+
+</html>

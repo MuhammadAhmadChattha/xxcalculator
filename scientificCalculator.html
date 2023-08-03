@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientific Calculator</title>
+  <style>
+    /* Add your calculator styles here */
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="input-display" readonly>
+    <div class="calculator-grid">
+      <!-- Numeric Buttons -->
+      <button class="calculator-button" onclick="addToInput('7')">7</button>
+      <button class="calculator-button" onclick="addToInput('8')">8</button>
+      <button class="calculator-button" onclick="addToInput('9')">9</button>
+      <button class="calculator-button" onclick="addToInput('4')">4</button>
+      <button class="calculator-button" onclick="addToInput('5')">5</button>
+      <button class="calculator-button" onclick="addToInput('6')">6</button>
+      <button class="calculator-button" onclick="addToInput('1')">1</button>
+      <button class="calculator-button" onclick="addToInput('2')">2</button>
+      <button class="calculator-button" onclick="addToInput('3')">3</button>
+      <button class="calculator-button" onclick="addToInput('0')">0</button>
+      <button class="calculator-button" onclick="addToInput('.')">.</button>
+
+      <!-- Basic Operations -->
+      <button class="calculator-button" onclick="addToInput('+')">+</button>
+      <button class="calculator-button" onclick="addToInput('-')">-</button>
+      <button class="calculator-button" onclick="addToInput('*')">*</button>
+      <button class="calculator-button" onclick="addToInput('/')">/</button>
+      <button class="calculator-button" onclick="calculateResult()">=</button>
+      <button class="calculator-button" onclick="clearInput()">C</button>
+
+      <!-- Scientific Functions -->
+      <button class="calculator-button" onclick="addToInput('sin(')">sin</button>
+      <button class="calculator-button" onclick="addToInput('cos(')">cos</button>
+      <button class="calculator-button" onclick="addToInput('tan(')">tan</button>
+      <button class="calculator-button" onclick="addToInput('sqrt(')">√</button>
+      <button class="calculator-button" onclick="addToInput('log(')">log</button>
+      <button class="calculator-button" onclick="addToInput('^')">^</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.min.js"></script>
+  <script>
+    // Add event listener to all calculator buttons
+    const buttons = document.querySelectorAll(".calculator-button");
+    buttons.forEach((button) => {
+      button.addEventListener("click", handleButtonClick);
+    });
+
+    // Handle button clicks
+    function handleButtonClick(event) {
+      const buttonValue = event.target.innerText;
+      if (buttonValue === "=") {
+        calculateResult();
+      } else if (buttonValue === "C") {
+        clearInput();
+      } else {
+        addToInput(buttonValue);
+      }
+    }
+
+    // Function to add the clicked button value to the calculator's input display
+    function addToInput(value) {
+      const inputDisplay = document.getElementById("input-display");
+      inputDisplay.value += value;
+    }
+
+    // Function to clear the input display
+    function clearInput() {
+      const inputDisplay = document.getElementById("input-display");
+      inputDisplay.value = "";
+    }
+
+    // Function to calculate the result using Math.js
+    function calculateResult() {
+      const inputDisplay = document.getElementById("input-display");
+      const input = inputDisplay.value;
+      try {
+        const result = math.evaluate(input);
+        inputDisplay.value = result;
+      } catch (error) {
+        inputDisplay.value = "Error";
+      }
+    }
+  </script>
+</body>
+</html>

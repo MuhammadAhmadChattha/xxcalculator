@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fraction Calculators</title>
+</head>
+<body>
+  <h1>Fraction Calculators</h1>
+  
+  <!-- Adding Fractions Calculator -->
+  <h2>Adding Fractions Calculator</h2>
+  <p>Enter the numerators and denominators of two fractions:</p>
+  Fraction 1: <input type="number" id="addNumerator1" placeholder="Numerator"> / <input type="number" id="addDenominator1" placeholder="Denominator">
+  <br>
+  Fraction 2: <input type="number" id="addNumerator2" placeholder="Numerator"> / <input type="number" id="addDenominator2" placeholder="Denominator">
+  <br>
+  <button onclick="addFractions()">Calculate</button>
+  <p id="addResult"></p>
+
+  <!-- Subtracting Fractions Calculator -->
+  <h2>Subtracting Fractions Calculator</h2>
+  <p>Enter the numerators and denominators of two fractions:</p>
+  Fraction 1: <input type="number" id="subtractNumerator1" placeholder="Numerator"> / <input type="number" id="subtractDenominator1" placeholder="Denominator">
+  <br>
+  Fraction 2: <input type="number" id="subtractNumerator2" placeholder="Numerator"> / <input type="number" id="subtractDenominator2" placeholder="Denominator">
+  <br>
+  <button onclick="subtractFractions()">Calculate</button>
+  <p id="subtractResult"></p>
+
+  <!-- Multiplying Fractions Calculator -->
+  <h2>Multiplying Fractions Calculator</h2>
+  <p>Enter the numerators and denominators of two fractions:</p>
+  Fraction 1: <input type="number" id="multiplyNumerator1" placeholder="Numerator"> / <input type="number" id="multiplyDenominator1" placeholder="Denominator">
+  <br>
+  Fraction 2: <input type="number" id="multiplyNumerator2" placeholder="Numerator"> / <input type="number" id="multiplyDenominator2" placeholder="Denominator">
+  <br>
+  <button onclick="multiplyFractions()">Calculate</button>
+  <p id="multiplyResult"></p>
+
+  <script>
+    // Adding Fractions Calculator
+    function addFractions() {
+      const numerator1 = parseInt(document.getElementById("addNumerator1").value);
+      const denominator1 = parseInt(document.getElementById("addDenominator1").value);
+      const numerator2 = parseInt(document.getElementById("addNumerator2").value);
+      const denominator2 = parseInt(document.getElementById("addDenominator2").value);
+
+      if (isNaN(numerator1) || isNaN(denominator1) || isNaN(numerator2) || isNaN(denominator2)) {
+        alert("Please enter valid numerator and denominator values for both fractions.");
+        return;
+      }
+
+      const resultNumerator = numerator1 * denominator2 + numerator2 * denominator1;
+      const resultDenominator = denominator1 * denominator2;
+
+      document.getElementById("addResult").textContent = `Result: ${resultNumerator}/${resultDenominator}`;
+    }
+
+    // Subtracting Fractions Calculator
+    function subtractFractions() {
+      const numerator1 = parseInt(document.getElementById("subtractNumerator1").value);
+      const denominator1 = parseInt(document.getElementById("subtractDenominator1").value);
+      const numerator2 = parseInt(document.getElementById("subtractNumerator2").value);
+      const denominator2 = parseInt(document.getElementById("subtractDenominator2").value);
+
+      if (isNaN(numerator1) || isNaN(denominator1) || isNaN(numerator2) || isNaN(denominator2)) {
+        alert("Please enter valid numerator and denominator values for both fractions.");
+        return;
+      }
+
+      const resultNumerator = numerator1 * denominator2 - numerator2 * denominator1;
+      const resultDenominator = denominator1 * denominator2;
+
+      document.getElementById("subtractResult").textContent = `Result: ${resultNumerator}/${resultDenominator}`;
+    }
+
+    // Multiplying Fractions Calculator
+    function multiplyFractions() {
+      const numerator1 = parseInt(document.getElementById("multiplyNumerator1").value);
+      const denominator1 = parseInt(document.getElementById("multiplyDenominator1").value);
+      const numerator2 = parseInt(document.getElementById("multiplyNumerator2").value);
+      const denominator2 = parseInt(document.getElementById("multiplyDenominator2").value);
+
+      if (isNaN(numerator1) || isNaN(denominator1) || isNaN(numerator2) || isNaN(denominator2)) {
+        alert("Please enter valid numerator and denominator values for both fractions.");
+        return;
+      }
+
+      const resultNumerator = numerator1 * numerator2;
+      const resultDenominator = denominator1 * denominator2;
+
+      document.getElementById("multiplyResult").textContent = `Result: ${resultNumerator}/${resultDenominator}`;
+    }
+  </script>
+</body>
+</html>

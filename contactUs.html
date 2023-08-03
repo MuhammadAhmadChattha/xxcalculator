@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body,
+    h1 {
+        font-family: "Raleway", Arial, sans-serif
+    }
+
+    h1 {
+        letter-spacing: 6px
+    }
+
+    .w3-row-padding img {
+        margin-bottom: 12px
+    }
+
+    input[type="email"] {
+        width: auto;
+        margin-left: 25px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    #message {
+        width: auto;
+        height: auto;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #828782;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #000000;
+    }
+
+    #result {
+        margin-top: 20px;
+        font-size: 18px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 4px;
+        background-color: #fff;
+    }
+
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .container1 {
+        align-content: center;
+        max-width: auto;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>
+</head>
+
+<body>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-content" style="max-width:1500px">
+
+        <!-- Header -->
+        <header class="w3-panel w3-center w3-opacity" style="padding:128px 16px">
+            <h1 class="w3-xlarge">CALCULATOR</h1>
+            <h1>Free Online Calculations</h1>
+
+            <div class="w3-padding-32">
+                <div class="w3-bar w3-border">
+                    <a href="#" class="w3-bar-item w3-button">Home</a>
+                    <a href="#" class="w3-bar-item w3-button w3-light-grey">About Us</a>
+                    <a href="#" class="w3-bar-item w3-button">Contact</a>
+                    <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small">Weddings</a> -->
+                </div>
+            </div>
+        </header>
+    </div>
+    <div style="text-align: center;">
+    <header>
+        <h1>Contact Us</h1>
+        <hr>
+    </header>
+    <nav>
+        <!-- You can add navigation links here if needed -->
+    </nav>
+    <main>
+        <!-- <section>
+            <h2>Contact Information</h2>
+            <p>Feel free to get in touch with us using the following contact details:</p>
+            <ul>
+                <li>Email: <a href="mailto:contact@example.com">contact@example.com</a></li>
+                <li>Phone: +1 (123) 456-7890</li>
+                <li>Address: 123 Main Street, City, Country</li>
+            </ul>
+        </section> -->
+        
+        <section>
+            <h2>Contact Form</h2>
+            <p>If you prefer, you can also reach out to us through this contact form:</p>
+            <form action="submit_form.php" method="post">
+                <label for="name">Name:</label>
+                <input type="email" id="name" name="name" required>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Connect with us on social media:</p>
+        <ul>
+            <li><a href="https://www.facebook.com/example" target="_blank">Facebook</a></li>
+            <li><a href="https://www.twitter.com/example" target="_blank">Twitter</a></li>
+            <li><a href="https://www.instagram.com/example" target="_blank">Instagram</a></li>
+        </ul>
+    </footer>
+</div>
+</body>
+</html>

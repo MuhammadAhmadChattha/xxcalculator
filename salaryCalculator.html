@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Earnings Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="number"] {
+      width: 150px;
+      padding: 5px;
+    }
+
+    #results {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Earnings Calculator</h1>
+  <form id="earningsCalculatorForm">
+    <label for="hourlyWage">Hourly Wage ($):</label>
+    <input type="number" id="hourlyWage" required>
+
+    <label for="hoursPerDay">Hours Per Day:</label>
+    <input type="number" id="hoursPerDay" required>
+
+    <label for="workingDaysPerWeek">Working Days Per Week:</label>
+    <input type="number" id="workingDaysPerWeek" required>
+
+    <label for="vacationDaysPerYear">Vacation Days Per Year:</label>
+    <input type="number" id="vacationDaysPerYear" required>
+
+    <label for="bonusAmount">Bonus Amount ($):</label>
+    <input type="number" id="bonusAmount" required>
+
+    <hr>
+    
+    <button type="button" onclick="calculateEarnings()">Calculate</button>
+  </form>
+  
+  <div id="results"></div>
+
+  <script>
+    function calculateEarnings() {
+      const hourlyWageInput = document.getElementById('hourlyWage');
+      const hoursPerDayInput = document.getElementById('hoursPerDay');
+      const workingDaysPerWeekInput = document.getElementById('workingDaysPerWeek');
+      const vacationDaysPerYearInput = document.getElementById('vacationDaysPerYear');
+      const bonusAmountInput = document.getElementById('bonusAmount');
+      const resultsElement = document.getElementById('results');
+
+      const hourlyWage = parseFloat(hourlyWageInput.value);
+      const hoursPerDay = parseFloat(hoursPerDayInput.value);
+      const workingDaysPerWeek = parseFloat(workingDaysPerWeekInput.value);
+      const vacationDaysPerYear = parseFloat(vacationDaysPerYearInput.value);
+      const bonusAmount = parseFloat(bonusAmountInput.value);
+
+      if (isNaN(hourlyWage) || isNaN(hoursPerDay) || isNaN(workingDaysPerWeek) || isNaN(vacationDaysPerYear) || isNaN(bonusAmount)) {
+        resultsElement.textContent = "Please enter valid numbers for all fields.";
+        return;
+      }
+
+      const annualWorkingDays = 52 * workingDaysPerWeek - vacationDaysPerYear;
+      const weeklyEarnings = hourlyWage * hoursPerDay * workingDaysPerWeek + (bonusAmount / 52);
+      const monthlyEarnings = weeklyEarnings * 4; // Assuming 4 weeks in a month
+      const yearlyEarnings = weeklyEarnings * annualWorkingDays;
+
+      resultsElement.innerHTML = `
+        <p>Hourly Earnings: $${hourlyWage.toFixed(2)}</p>
+        <p>Weekly Earnings: $${weeklyEarnings.toFixed(2)}</p>
+        <p>Monthly Earnings: $${monthlyEarnings.toFixed(2)}</p>
+        <p>Yearly Earnings: $${yearlyEarnings.toFixed(2)}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
